@@ -15,7 +15,7 @@ interface.
 *  Lists all a user's issues
 *  List all a user's projects
 *  Finds an issue by Key (AB-123) or Id (123456)
-*  Opens an issue 
+*  Opens an issue
 *  Allows user to add a new ticket to different projects
 *  Transitions an issue (shows all available transition states)
 *  Adds a worklog to an issue
@@ -36,10 +36,19 @@ interface.
 
 `jira -f AB-123`
 
-## Notes ##
+## Config file ##
 
-If you use `https:` for jira, add `"protocol": "https:"` to your .jiraclirc.json
-If your ssl certs are also self-signed add: `"strictSSL": false` to your .jiraclirc.json
+The first time you run `jira` the program will help you set up your
+`.jiraclirc.json` configuration file. The configuration file is a basic JSON
+file accpets the following properties:
+
+* `user` - your username
+* `password` - your password
+* `host` - host name to the JIRA installation (eg. `jira.example.com`)
+* `port` - port for the JIRA installation (eg. `80` or `443`)
+* `protocol` - http protocol for API communication (`http:` or `https:`)
+* `strictSSL` - set this to `false` if you are using a self signed SSL certificat
+* `project` - default project ID (eg. `10013`)
 
 ## Testing ##
 
@@ -82,5 +91,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) 2012 Chris Moultrie  
+Copyright (c) 2012 Chris Moultrie
 Licensed under the MIT license.
