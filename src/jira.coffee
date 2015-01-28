@@ -66,8 +66,10 @@ loadConfigFile = (configFilePath) ->
 # lets the user apply that transition to the item. Optionally the user can
 # specify a comment which will then prompt for time spent. This adds a work log
 # item to the item before the transition.
+
 transitionItem = (issueId) ->
     jiraCli.listTransitions issueId, (transitions) ->
+        transitions = transitions.transitions
         transitions.sort dutils.itemSorter
         for transition, index in transitions
             jiraCli.pp.prettyPrintTransition transition, index + 1
