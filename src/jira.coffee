@@ -175,6 +175,9 @@ if require.main is module
         ).options('h',
             alias:'help'
             describe:'Shows this help message'
+        ).options('v',
+            alias:'version'
+            describe:'Shows jira-cli version'
         ).usage('Usage:\n\tjira -f EG-143\n\tjira -r EG-143')
         .boolean('d')
         .string('s')
@@ -185,6 +188,11 @@ if require.main is module
     if argv.argv.help
         argv.showHelp()
         process.exit 0
+
+    if argv.argv.version
+        console.log 'v1.0.0'
+        process.exit 0
+
     args = argv.argv
 
     configFilePath = path.join process.env.HOME, '.jiraclirc.json'
