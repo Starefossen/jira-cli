@@ -131,7 +131,7 @@ addItem = (project)->
                 issueTypes.sort dutils.itemSorter
                 for type, index in issueTypes
                     jiraCli.pp.prettyPrintIssueTypes type, index + 1
-                    
+
                 allowedTypes = [1..issueTypes.length]
                 addIssueCallback = (type)->
                     jiraCli.addIssue summary, description,
