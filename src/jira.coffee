@@ -50,7 +50,7 @@ createConfigFile = (aConfigFile) ->
 paramIsText = (param)->
     if typeof(param) is "boolean"
         argv.showHelp()
-        return false
+        process.exit 1
     true
 
 # ## Load the Config File ##
@@ -184,13 +184,13 @@ if require.main is module
 
     if argv.argv.help
         argv.showHelp()
-        return
+        process.exit 0
     args = argv.argv
 
     configFilePath = path.join process.env.HOME, '.jiraclirc.json'
     unless fs.existsSync configFilePath
         createConfigFile configFilePath
-        return
+        process.exit 0
 
     configFile = loadConfigFile(configFilePath)
     jiraCli = new JiraHelper configFile
@@ -224,3 +224,5 @@ if require.main is module
         transitionItem args.t
     else
         argv.showHelp()
+        process.exit 1
+
